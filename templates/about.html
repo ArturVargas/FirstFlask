@@ -1,0 +1,11 @@
+
+
+{% extends "layout.html" %}
+
+{% block content %}
+    <h1>Este es el About</h1>
+    {% for dato in data %}
+        <p>{{ dato["name"] }}</p>
+    {% endfor %}
+{% endblock %}
+
