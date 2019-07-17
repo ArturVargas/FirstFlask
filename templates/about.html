@@ -1,11 +1,69 @@
-
-
 {% extends "layout.html" %}
 
 {% block content %}
-    <h1>Este es el About</h1>
-    {% for dato in data %}
-        <p>{{ dato["name"] }}</p>
+<div class="container">
+  <div class="row d-flex justify-content-around">
+    <div class="col-6 text-light">
+      <div class="media">
+        <img src="{{about.avatar}}" class="mr-3 rounded-circle" alt="img" width="100" height="auto">
+        <div class="media-body">
+          <h5 class="mt-0">{{about.name}}</h5>
+          <p class="text-justify">
+            {{about.bio}}
+          </p>
+        </div>
+      </div>
+      <p class="font-weight-bolder">{{about.address}}</p>
+    </div>
+    <div class="col-4">
+      <h5 class="font-weight-bolder text-light">Skills</h5>
+      <div>
+        <ul class="list-group list-group-flush border-0">
+          {% for skill in about.skills %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{skill.name}}
+            <span class="badge badge-primary badge-pill">{{skill.percentage}}</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <h5 class="text-light text-center mt-5">Experiencia Profesional</h5>
+  <div class="row my-5 justify-content-center">
+    {% for exp in about.experience %}
+    <div class="col-4">
+      <div class="card text-center text-white bg-secondary">
+        <div class="card-body">
+          <h5 class="card-title">{{exp.company}}</h5>
+          <small class="form-text text-white-50">{{exp.startDate}} - {{exp.endDate}}</small>
+          <h6>{{exp.jobTitle}}</h6>
+          <p class="card-text">{{exp.jobDescription}}</p>
+          <a href="#" class="btn btn-danger">Go somewhere</a>
+        </div>
+      </div>
+    </div>
     {% endfor %}
-{% endblock %}
+  </div>
 
+  <h5 class="text-light text-center mt-5">Educación</h5>
+  <div class="row my-5 justify-content-center">
+    {% for edu in about.education %}
+    <div class="col-4">
+      <div class="card text-center text-white bg-secondary">
+        <div class="card-body">
+          <h5 class="card-title">{{edu.degree}}</h5>
+          <h6>{{edu.institution}}</h6>
+          <small class="form-text text-white-50">{{edu.startDate}} - {{edu.endDate}}</small>
+          <h6>{{jobTitle}}</h6>
+          <p class="card-text">{{edu.description}}</p>
+          <a href="#" class="btn btn-danger">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+{% endblock %}
